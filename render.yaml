@@ -22,7 +22,7 @@ services:
           name: odoo-db
           property: password
       - key: DB_NAME
-        value: odoo18sf
+        value: odooo18
       - key: ADMIN_PASSWD
         value: admin
 
