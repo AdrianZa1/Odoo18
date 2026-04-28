@@ -6,21 +6,13 @@ services:
     dockerfilePath: Dockerfile
     envVars:
       - key: DB_HOST
-        fromDatabase:
-          name: odoo-db
-          property: host
+        value: dpg-d7o3vgpj2pic739k5bl0-a
       - key: DB_PORT
-        fromDatabase:
-          name: odoo-db
-          property: port
+        value: "5432"
       - key: DB_USER
-        fromDatabase:
-          name: odoo-db
-          property: user
+        value: odooo18_user
       - key: DB_PASSWORD
-        fromDatabase:
-          name: odoo-db
-          property: password
+        value: wWudyaae8FC1b87UuNljhIFMrCRQwgYp
       - key: DB_NAME
         value: odooo18
       - key: ADMIN_PASSWD
