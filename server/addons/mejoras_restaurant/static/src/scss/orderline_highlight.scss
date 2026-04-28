@@ -1,0 +1,130 @@
+/**
+ * ========================================================================
+ * Order Line Highlight by Kitchen State - Semáforo Style
+ * ========================================================================
+ * Colorea las líneas de la orden según su estado en la cocina
+ * Sistema de semáforo: Rojo (no enviado) → Amarillo (enviado) → Verde (servido)
+ * 
+ * Estados:
+ * - kitchen-pending-line: NO ENVIADO - Rojo (no sent to kitchen yet)
+ * - kitchen-sent-line: ENVIADO - Amarillo (en preparación en cocina)
+ * - kitchen-served-line: SERVIDO - Verde (listo para entregar) + TACHADO
+ * - kitchen-reserved-line: BLOQUEADO - Gris (no se puede eliminar)
+ * 
+ * Los colores se mantienen persistentes en la BD a través de saved_quantity y kitchenServed
+ */
+
+.kitchen-pending-line {
+    // SEMÁFORO ROJO - No enviado a cocina
+    background-color: #ffcccc !important;  // Rojo muy claro
+    border-left: 6px solid #dc3545 !important;  // Rojo intenso
+    
+    .orderline {
+        background-color: #fff0f0 !important;
+    }
+    
+    .product-name {
+        font-weight: 600;
+        color: #8b0000 !important;  // Rojo oscuro
+        text-decoration: none;  // Sin tachado
+    }
+}
+
+.kitchen-sent-line {
+    // SEMÁFORO AMARILLO - Enviado a cocina (en preparación)
+    background-color: #ffffcc !important;  // Amarillo muy claro
+    border-left: 6px solid #ffc107 !important;  // Amarillo intenso
+    
+    .orderline {
+        background-color: #fffef0 !important;
+    }
+    
+    .product-name {
+        font-weight: 600;
+        color: #cc8800 !important;  // Naranja oscuro
+        text-decoration: none;  // Sin tachado
+    }
+}
+
+.kitchen-served-line {
+    // SEMÁFORO VERDE - Servido (listo para entregar) + TACHADO
+    background-color: #ccffcc !important;  // Verde muy claro
+    border-left: 6px solid #28a745 !important;  // Verde intenso
+    
+    .orderline {
+        background-color: #f0fff0 !important;
+    }
+    
+    .product-name {
+        font-weight: 600;
+        color: #005500 !important;  // Verde oscuro
+        text-decoration: line-through !important;  // TACHADO
+        opacity: 0.7;  // Un poco más transparente
+    }
+}
+
+
+.kitchen-reserved-line {
+    // BLOQUEADO - Gris (no se puede eliminar)
+    background-color: #e8e8e8 !important;
+    border-left: 6px solid #6c757d !important;
+    
+    .orderline {
+        background-color: #f5f5f5 !important;
+    }
+    
+    .product-name {
+        font-weight: 500;
+        color: #495057 !important;
+    }
+    
+    opacity: 0.85;
+}
+
+// Animación de pulso para líneas activas
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+// Hover effect para mejor legibilidad
+.orderline {
+    transition: all 0.3s ease;
+    
+    &:hover.kitchen-pending-line {
+        background-color: #ffaaaa !important;
+        box-shadow: inset 0 0 5px rgba(220, 53, 69, 0.4);
+    }
+    
+    &:hover.kitchen-sent-line {
+        background-color: #ffffaa !important;
+        box-shadow: inset 0 0 5px rgba(255, 193, 7, 0.4);
+    }
+    
+    &:hover.kitchen-served-line {
+        background-color: #aaffaa !important;
+        box-shadow: inset 0 0 5px rgba(40, 167, 69, 0.4);
+    }
+    
+    &:hover.kitchen-reserved-line {
+        background-color: #d0d0d0 !important;
+        box-shadow: inset 0 0 5px rgba(108, 117, 125, 0.4);
+    }
+}
+
+// Asegurar que los estados persistentes se mantienen
+.pos-orderline {
+    &.kitchen-pending-line,
+    &.kitchen-sent-line,
+    &.kitchen-served-line,
+    &.kitchen-reserved-line {
+        // Estilos persistentes que no se pierden al recargar
+        background-color: inherit !important;
+        border-left-width: 6px !important;
+        border-left-style: solid !important;
+    }
+}

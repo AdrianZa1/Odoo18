@@ -1,0 +1,125 @@
+/**
+ * Waiter Assignment Styles
+ * Styles for displaying waiter badges above tables in floor plan
+ */
+
+.floor-screen {
+
+    .table-center-meta {
+        pointer-events: none;
+        line-height: 1.1;
+    }
+
+    .table-service-progress {
+        margin-bottom: 2px;
+        font-size: 12px;
+        padding: 1px 6px;
+        border-radius: 999px;
+        background: rgba(0, 0, 0, 0.12);
+        color: #1f2937;
+        text-shadow: none;
+    }
+
+    .table-waiting-time {
+        margin-top: 2px;
+        font-size: 11px;
+        padding: 1px 5px;
+        border-radius: 999px;
+        background: rgba(239, 68, 68, 0.15);
+        color: #991b1b;
+        text-shadow: none;
+        font-weight: 600;
+    }
+    
+    // Waiter badge container
+    .waiter-badge-container {
+        // Ensure badge doesn't interfere with table drag & drop
+        pointer-events: none;
+        
+        // Smooth transitions when badge appears/disappears
+        transition: opacity 0.2s ease-in-out;
+    }
+    
+    // Waiter badge styling
+    .waiter-badge {
+        // Base styling
+        display: inline-block;
+        font-size: 10px;
+        line-height: 1.2;
+        padding: 3px 8px;
+        
+        // Text styling
+        font-weight: 600;
+        letter-spacing: 0.3px;
+        
+        // Shadow for better visibility on various backgrounds
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15),
+                    0 1px 2px rgba(0, 0, 0, 0.1);
+        
+        // Ensure text is always readable
+        color: white !important;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        
+        // Prevent text selection
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        
+        // Smooth transitions
+        transition: all 0.2s ease;
+        
+        // Hover effect (subtle scale)
+        &:hover {
+            transform: scale(1.05);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.20),
+                        0 2px 4px rgba(0, 0, 0, 0.15);
+        }
+    }
+    
+    // Responsive adjustments
+    @media (max-width: 768px) {
+        .table-service-progress {
+            font-size: 10px;
+            padding: 1px 4px;
+        }
+
+        .waiter-badge {
+            font-size: 9px;
+            padding: 2px 6px;
+        }
+    }
+    
+    // Kanban view adjustments
+    &.floor-kanban {
+        .waiter-badge-container {
+            // In kanban view, position relative to card
+            position: relative;
+            top: 0;
+            margin-bottom: 5px;
+        }
+    }
+    
+    // Edit mode: slightly fade badges to focus on table editing
+    .floor-map.floor-grid {
+        .waiter-badge {
+            opacity: 0.7;
+        }
+    }
+}
+
+// Animation for badge appearance
+@keyframes waiterBadgeAppear {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.waiter-badge-container {
+    animation: waiterBadgeAppear 0.3s ease-out;
+}

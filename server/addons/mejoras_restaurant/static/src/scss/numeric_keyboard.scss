@@ -1,0 +1,428 @@
+/**
+ * Estilos para NumericKeyboardPopup
+ * Optimizado para tablet y mobile
+ *
+ * Media Queries:
+ * - Mobile: < 576px (botones 40px)
+ * - Tablet: 576px - 992px (botones 60px)
+ * - Desktop: > 992px (botones 60px)
+ */
+
+.numeric-keyboard-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1050;
+    animation: fadeIn 150ms ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.numeric-keyboard-popup {
+    width: 90%;
+    max-width: 500px;
+    animation: slideUp 200ms ease-out;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    border: 1px solid #e0e0e0;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* ===== HEADER ===== */
+.numeric-keyboard-popup .popup-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.numeric-keyboard-popup .popup-header h2 {
+    color: white;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.numeric-keyboard-popup .popup-header .btn-close {
+    filter: brightness(0) invert(1);
+    opacity: 0.8;
+}
+
+.numeric-keyboard-popup .popup-header .btn-close:hover {
+    opacity: 1;
+}
+
+/* ===== DISPLAY ===== */
+.numeric-keyboard-popup .popup-display {
+    background: #f8f9fa;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.numeric-keyboard-popup .pin-display {
+    color: #333;
+    letter-spacing: 8px;
+    font-weight: bold;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    word-break: break-all;
+    word-spacing: 8px;
+}
+
+.numeric-keyboard-popup .pin-status {
+    min-height: 24px;
+    font-size: 0.875rem;
+}
+
+.numeric-keyboard-popup .pin-status small {
+    display: block;
+}
+
+/* ===== TECLADO ===== */
+.numeric-keyboard-popup .popup-keyboard {
+    background: #fff;
+}
+
+.keyboard-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+    justify-content: center;
+}
+
+.keyboard-row:last-of-type {
+    margin-bottom: 0;
+}
+
+.keyboard-btn {
+    flex: 1;
+    aspect-ratio: 1;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    background: #f0f0f0;
+    color: #333;
+    transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    user-select: none;
+    -webkit-touch-callout: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.keyboard-btn:active,
+.keyboard-btn:focus {
+    outline: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: scale(0.95);
+}
+
+.keyboard-btn:hover {
+    background: #e0e0e0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/**
+ * Botones especiales
+ */
+.keyboard-btn-delete {
+    background: #ffebee;
+    color: #d32f2f;
+}
+
+.keyboard-btn-delete:hover {
+    background: #ffcdd2;
+}
+
+.keyboard-btn-delete:active,
+.keyboard-btn-delete:focus {
+    background: #ef5350;
+    color: white;
+}
+
+.keyboard-btn-confirm {
+    background: #c8e6c9;
+    color: #2e7d32;
+}
+
+.keyboard-btn-confirm:hover {
+    background: #a5d6a7;
+}
+
+.keyboard-btn-confirm:active,
+.keyboard-btn-confirm:focus {
+    background: #43a047;
+    color: white;
+}
+
+/* ===== ALTERNATIVAS ===== */
+.numeric-keyboard-popup .popup-alternatives {
+    background: #f8f9fa;
+}
+
+.numeric-keyboard-popup .popup-alternatives .btn {
+    font-weight: 600;
+    padding: 0.75rem 1.25rem;
+    border-radius: 6px;
+    transition: all 150ms ease;
+}
+
+.numeric-keyboard-popup .popup-alternatives .btn:hover {
+    background: #e0e0e0;
+}
+
+/* ===== FOOTER ===== */
+.numeric-keyboard-popup .popup-footer {
+    background: #f8f9fa;
+    font-size: 0.75rem;
+}
+
+.numeric-keyboard-popup .popup-footer kbd {
+    background: #333;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 3px;
+    display: inline-block;
+    margin: 0 2px;
+    font-family: monospace;
+    font-size: 0.7rem;
+}
+
+/* ===== RESPONSIVE MOBILE (< 576px) ===== */
+@media (max-width: 575.98px) {
+    .numeric-keyboard-popup {
+        width: 95%;
+        max-width: none;
+        min-width: 280px;
+    }
+
+    .numeric-keyboard-popup .popup-header h2 {
+        font-size: 1.1rem;
+    }
+
+    .numeric-keyboard-popup .pin-display {
+        font-size: 2.5rem;
+        letter-spacing: 6px;
+        word-spacing: 6px;
+        min-height: 60px;
+    }
+
+    .keyboard-btn {
+        aspect-ratio: 1;
+        font-size: 1.25rem;
+        min-width: 35px;
+        min-height: 50px;
+    }
+
+    .keyboard-row {
+        gap: 6px;
+        margin-bottom: 6px;
+    }
+
+    .numeric-keyboard-popup .popup-display {
+        padding: 1rem;
+        min-height: 90px;
+    }
+
+    .numeric-keyboard-popup .popup-keyboard {
+        padding: 1rem;
+    }
+}
+
+/* ===== RESPONSIVE TABLET (576px - 992px) ===== */
+@media (min-width: 576px) and (max-width: 991.98px) {
+    .numeric-keyboard-popup {
+        width: 85%;
+        max-width: 500px;
+    }
+
+    .numeric-keyboard-popup .pin-display {
+        font-size: 3rem;
+        letter-spacing: 10px;
+        word-spacing: 10px;
+        min-height: 80px;
+    }
+
+    .keyboard-btn {
+        aspect-ratio: 1;
+        font-size: 1.75rem;
+        min-width: 60px;
+        min-height: 60px;
+        border-radius: 10px;
+    }
+
+    .keyboard-row {
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+
+    .numeric-keyboard-popup .popup-display {
+        padding: 1.5rem;
+        min-height: 120px;
+    }
+
+    .numeric-keyboard-popup .popup-keyboard {
+        padding: 1.25rem;
+    }
+}
+
+/* ===== RESPONSIVE DESKTOP (>= 992px) ===== */
+@media (min-width: 992px) {
+    .numeric-keyboard-popup {
+        width: 450px;
+    }
+
+    .numeric-keyboard-popup .pin-display {
+        font-size: 3.5rem;
+        letter-spacing: 12px;
+        word-spacing: 12px;
+        min-height: 100px;
+    }
+
+    .keyboard-btn {
+        aspect-ratio: 1;
+        font-size: 2rem;
+        min-width: 70px;
+        min-height: 70px;
+        border-radius: 12px;
+    }
+
+    .keyboard-row {
+        gap: 12px;
+        margin-bottom: 12px;
+    }
+
+    .numeric-keyboard-popup .popup-display {
+        padding: 2rem;
+        min-height: 140px;
+    }
+
+    .numeric-keyboard-popup .popup-keyboard {
+        padding: 1.5rem;
+    }
+}
+
+/* ===== ORIENTACIÓN LANDSCAPE (Tablet) ===== */
+@media (max-height: 600px) and (orientation: landscape) {
+    .numeric-keyboard-popup .popup-display {
+        min-height: 70px;
+        padding: 0.75rem;
+    }
+
+    .numeric-keyboard-popup .pin-display {
+        font-size: 2.5rem;
+        min-height: auto;
+    }
+
+    .keyboard-btn {
+        aspect-ratio: 1 / 0.9;
+        font-size: 1.25rem;
+        min-height: 45px;
+    }
+
+    .keyboard-row {
+        gap: 6px;
+        margin-bottom: 6px;
+    }
+
+    .numeric-keyboard-popup .popup-keyboard {
+        padding: 0.75rem;
+    }
+}
+
+/* ===== ACCESIBILIDAD ===== */
+@media (prefers-reduced-motion: reduce) {
+    .numeric-keyboard-popup-overlay,
+    .numeric-keyboard-popup,
+    .keyboard-btn {
+        animation: none;
+        transition: none;
+    }
+}
+
+/* ===== DARK MODE (si Odoo lo soporta) ===== */
+@media (prefers-color-scheme: dark) {
+    .numeric-keyboard-popup {
+        background: #2d2d2d;
+        border-color: #444;
+    }
+
+    .numeric-keyboard-popup .popup-header {
+        background: linear-gradient(135deg, #5a67d8 0%, #667eea 100%);
+    }
+
+    .numeric-keyboard-popup .popup-display {
+        background: #3a3a3a;
+    }
+
+    .numeric-keyboard-popup .pin-display {
+        color: #fff;
+    }
+
+    .keyboard-btn {
+        background: #404040;
+        color: #fff;
+    }
+
+    .keyboard-btn:hover {
+        background: #4a4a4a;
+    }
+
+    .keyboard-btn-delete {
+        background: #5a2e2e;
+        color: #ff8888;
+    }
+
+    .keyboard-btn-delete:hover {
+        background: #6a3e3e;
+    }
+
+    .keyboard-btn-confirm {
+        background: #2e5a3e;
+        color: #88ff88;
+    }
+
+    .keyboard-btn-confirm:hover {
+        background: #3e6a4e;
+    }
+}
+
+/* ===== ESTADOS DE CARGA Y ERROR ===== */
+.numeric-keyboard-popup.is-loading .popup-display {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.numeric-keyboard-popup.is-error .popup-display {
+    background: #ffebee;
+}
+
+.numeric-keyboard-popup.is-error .pin-display {
+    color: #d32f2f;
+}

@@ -1,0 +1,32 @@
+services:
+  - type: web
+    name: odoo
+    env: docker
+    plan: free
+    dockerfilePath: Dockerfile
+    envVars:
+      - key: DB_HOST
+        fromDatabase:
+          name: odoo-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: odoo-db
+          property: port
+      - key: DB_USER
+        fromDatabase:
+          name: odoo-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: odoo-db
+          property: password
+      - key: DB_NAME
+        value: odoo18sf
+      - key: ADMIN_PASSWD
+        value: admin
+
+  - type: postgres
+    name: odoo-db
+    plan: free
+    version: "15"

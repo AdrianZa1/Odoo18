@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.swp
+*.swo
+*.tmp
+*.log
+*.bak
+*.backup
+backups2/
+sessions/
+.DS_Store
+.vscode/

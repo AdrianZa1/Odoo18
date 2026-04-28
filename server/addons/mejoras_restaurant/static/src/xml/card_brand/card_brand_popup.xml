@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="mejoras_restaurant.CardBrandGridPopup">
+        <Dialog title="props.title" size="'md'" bodyClass="'pos-card-brand-popup-body'">
+            <div class="pcb-subtitle" t-esc="props.subtitle"/>
+
+            <div class="pcb-grid">
+                <button
+                    t-foreach="props.cards"
+                    t-as="card"
+                    t-key="card.key"
+                    class="pcb-card"
+                    t-att-class="state.selectedKey === card.key ? 'selected' : ''"
+                    t-on-click="() => this.selectCard(card)">
+                    <img class="pcb-logo" t-att-src="card.image" t-att-alt="card.label"/>
+                    <span class="pcb-label" t-esc="card.label"/>
+                </button>
+            </div>
+
+            <div class="pcb-lot-group mt-3">
+                <label class="pcb-lot-label" for="pcb-lot-number">
+                    <t t-esc="'Numero de lote'"/>
+                </label>
+                <input
+                    id="pcb-lot-number"
+                    class="form-control pcb-lot-input"
+                    type="text"
+                    placeholder="Ej: 245"
+                    inputmode="numeric"
+                    autocomplete="off"
+                    maxlength="12"
+                    t-att-value="state.lotNumber"
+                    t-on-input="onLotNumberInput"
+                />
+                <div class="pcb-lot-help">
+                    <t t-esc="'Campo obligatorio. Solo numeros (max. 12).'"/>
+                </div>
+
+                <div class="pcb-keypad" role="group" aria-label="Teclado numerico lote">
+                    <button class="pcb-key" t-on-click="() => this.appendLotDigit('1')">1</button>
+                    <button class="pcb-key" t-on-click="() => this.appendLotDigit('2')">2</button>
+                    <button class="pcb-key" t-on-click="() => this.appendLotDigit('3')">3</button>
+                    <button class="pcb-key" t-on-click="() => this.appendLotDigit('4')">4</button>
+                    <button class="pcb-key" t-on-click="() => this.appendLotDigit('5')">5</button>
+                    <button class="pcb-key" t-on-click="() => this.appendLotDigit('6')">6</button>
+                    <button class="pcb-key" t-on-click="() => this.appendLotDigit('7')">7</button>
+                    <button class="pcb-key" t-on-click="() => this.appendLotDigit('8')">8</button>
+                    <button class="pcb-key" t-on-click="() => this.appendLotDigit('9')">9</button>
+                    <button class="pcb-key pcb-key-action" t-on-click="clearLotNumber">C</button>
+                    <button class="pcb-key" t-on-click="() => this.appendLotDigit('0')">0</button>
+                    <button class="pcb-key pcb-key-action" t-on-click="backspaceLotNumber">⌫</button>
+                </div>
+            </div>
+
+            <t t-set-slot="footer">
+                <div class="d-flex w-100 justify-content-end gap-2">
+                    <button class="btn btn-secondary" t-on-click="cancel">
+                        <t t-esc="'Cancelar'"/>
+                    </button>
+                    <button class="btn btn-primary" t-att-disabled="!this.canConfirm()" t-on-click="confirm">
+                        <t t-esc="'Confirmar'"/>
+                    </button>
+                </div>
+            </t>
+        </Dialog>
+    </t>
+
+</templates>

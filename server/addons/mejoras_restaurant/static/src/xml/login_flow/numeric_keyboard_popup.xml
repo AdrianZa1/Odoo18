@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="mejoras_restaurant.NumericKeyboardPopup">
+        <div class="numeric-keyboard-popup-overlay d-flex align-items-center justify-content-center">
+            <div class="numeric-keyboard-popup bg-white rounded-lg shadow-lg">
+                <!-- Header -->
+                <div class="popup-header d-flex justify-content-between align-items-center p-3 border-bottom">
+                    <h2 class="mb-0 fs-5" t-esc="this.props.title or 'Ingrese su PIN'"/>
+                    <button class="btn-close" aria-label="Close" t-on-click="() => this.cancel()"/>
+                </div>
+
+                <!-- Display del PIN -->
+                <div class="popup-display p-4 text-center border-bottom">
+                    <div class="pin-display fs-1 font-monospace font-weight-bold">
+                        <t t-esc="this.getDisplayValue()"/>
+                    </div>
+                </div>
+
+                <!-- Teclado numérico 3x4 -->
+                <div class="popup-keyboard p-3">
+                    <!-- Fila 1: 1-3 -->
+                    <div class="keyboard-row mb-2 d-flex gap-2">
+                        <t t-foreach="[1, 2, 3]" t-as="num" t-key="num">
+                            <button class="keyboard-btn flex-grow-1" t-on-click="() => this.pressKey(num)" t-esc="num"/>
+                        </t>
+                    </div>
+
+                    <!-- Fila 2: 4-6 -->
+                    <div class="keyboard-row mb-2 d-flex gap-2">
+                        <t t-foreach="[4, 5, 6]" t-as="num" t-key="num">
+                            <button class="keyboard-btn flex-grow-1" t-on-click="() => this.pressKey(num)" t-esc="num"/>
+                        </t>
+                    </div>
+
+                    <!-- Fila 3: 7-9 -->
+                    <div class="keyboard-row mb-2 d-flex gap-2">
+                        <t t-foreach="[7, 8, 9]" t-as="num" t-key="num">
+                            <button class="keyboard-btn flex-grow-1" t-on-click="() => this.pressKey(num)" t-esc="num"/>
+                        </t>
+                    </div>
+
+                    <!-- Fila 4: Borrar - 0 - Confirmar -->
+                    <div class="keyboard-row mb-2 d-flex gap-2">
+                        <button class="keyboard-btn keyboard-btn-delete flex-grow-1" t-on-click="() => this.deletePin()" title="Borrar">⌫ Borrar</button>
+                        <button class="keyboard-btn flex-grow-1" t-on-click="() => this.pressKey(0)" t-esc="0"/>
+                        <button class="keyboard-btn keyboard-btn-confirm flex-grow-1" t-on-click="() => this.confirm()" title="Confirmar">✓ Aceptar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

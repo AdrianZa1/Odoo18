@@ -1,0 +1,162 @@
+﻿.pos-card-brand-popup-body {
+    padding: 0.75rem;
+}
+
+.pcb-subtitle {
+    margin-bottom: 0.75rem;
+    color: #5f6b7a;
+    font-size: 0.95rem;
+}
+
+.pcb-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+}
+
+.pcb-card {
+    border: 2px solid #d8dde6;
+    border-radius: 14px;
+    background: #ffffff;
+    min-height: 124px;
+    padding: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pcb-card:hover {
+    border-color: #2082c3;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+}
+
+.pcb-card.selected {
+    border-color: #1a7bbf;
+    background: #eef7ff;
+    box-shadow: 0 0 0 3px rgba(26, 123, 191, 0.16);
+}
+
+.pcb-logo {
+    max-width: 68px;
+    max-height: 40px;
+    object-fit: contain;
+}
+
+.pcb-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #253045;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.pcb-lot-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.pcb-lot-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #253045;
+}
+
+.pcb-lot-input {
+    border-radius: 10px;
+}
+
+.pcb-lot-help {
+    font-size: 0.75rem;
+    color: #637086;
+}
+
+.pcb-keypad {
+    margin-top: 0.55rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.45rem;
+}
+
+.pcb-key {
+    min-height: 44px;
+    border: 1px solid #c9d4e5;
+    border-radius: 10px;
+    background: #ffffff;
+    color: #253045;
+    font-size: 1rem;
+    font-weight: 700;
+    transition: background-color 0.12s ease, border-color 0.12s ease;
+}
+
+.pcb-key:hover {
+    border-color: #1a7bbf;
+    background: #f2f8ff;
+}
+
+.pcb-key:active {
+    background: #e6f1ff;
+}
+
+.pcb-key-action {
+    background: #f4f7fb;
+}
+
+/* Mini tarjeta en la linea de pago */
+.pcb-line-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.2rem 0.45rem;
+    border-radius: 999px;
+    border: 1px solid #c9d4e5;
+    background: #f3f8ff;
+}
+
+.pcb-line-logo {
+    width: 20px;
+    height: 14px;
+    object-fit: contain;
+    border-radius: 2px;
+    background: #fff;
+}
+
+.pcb-line-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #2a3850;
+    line-height: 1;
+}
+
+.pcb-line-lot {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #3e4c63;
+    background: #f5f7fb;
+    border: 1px solid #d9e0ec;
+    border-radius: 999px;
+    padding: 0.15rem 0.45rem;
+}
+
+@media (max-width: 900px) {
+    .pcb-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 560px) {
+    .pcb-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pcb-key {
+        min-height: 50px;
+        font-size: 1.05rem;
+    }
+}

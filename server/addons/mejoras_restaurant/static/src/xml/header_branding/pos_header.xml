@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="mejoras_restaurant.Navbar" t-inherit="point_of_sale.Navbar" t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('pos-centerheader')]/img[hasclass('pos-logo')]" position="replace">
+            <img
+                class="pos-custom-brand-logo mw-100"
+                t-on-click="() => debug.toggleWidget()"
+                src="/mejoras_restaurant/static/src/img/chavecito_logo.svg"
+                alt="CHAVECITOO POS"
+                style="height: 49px;"
+            />
+        </xpath>
+    </t>
+</templates>

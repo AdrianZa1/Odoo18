@@ -1,0 +1,7 @@
+<templates id="template" xml:space="preserve">
+    <t t-name="mejoras_restaurant.ControlButtonsOverride" t-inherit="point_of_sale.ControlButtons" t-inherit-mode="extension">
+        <xpath expr="//button[contains(@t-on-click, 'onDeleteOrder')]" position="attributes">
+            <attribute name="t-on-click">() => this.pos.onDeleteOrderWithKitchenCheck(this.pos.get_order())</attribute>
+        </xpath>
+    </t>
+</templates>

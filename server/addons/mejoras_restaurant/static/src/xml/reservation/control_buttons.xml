@@ -1,0 +1,14 @@
+<templates id="template" xml:space="preserve">
+    <t t-name="mejoras_restaurant.ReservationControlButtons" t-inherit="pos_restaurant.ControlButtons" t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('control-buttons-modal')]/button[contains(@t-on-click, 'clickRefund')]" position="after">
+            <button
+                class="btn btn-secondary btn-lg py-5"
+                t-if="props.showRemainingButtons"
+                t-att-disabled="!this.canReserveSelectedLine"
+                t-on-click="() => this.clickReserveLine()">
+                <i class="fa fa-bookmark me-1" role="img" aria-label="Reservar" title="Reservar" />
+                Reservar
+            </button>
+        </xpath>
+    </t>
+</templates>

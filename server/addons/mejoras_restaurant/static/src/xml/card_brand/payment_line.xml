@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="point_of_sale.PaymentScreenPaymentLines" t-inherit="point_of_sale.PaymentScreenPaymentLines" t-inherit-mode="extension">
+
+        <!-- Marca en línea seleccionada -->
+        <xpath expr="//t[@t-if='line.isSelected()']//span[@class='payment-name']" position="after">
+            <t t-if="line.card_brand">
+                <t t-set="brandImage" t-value="line.card_brand === 'Visa' ? '/mejoras_restaurant/static/src/img/cards/visa.svg' : line.card_brand === 'MasterCard' ? '/mejoras_restaurant/static/src/img/cards/mastercard.svg' : line.card_brand === 'American Express' ? '/mejoras_restaurant/static/src/img/cards/amex.svg' : line.card_brand === 'Diners Club' ? '/mejoras_restaurant/static/src/img/cards/diners.svg' : line.card_brand === 'Discover' ? '/mejoras_restaurant/static/src/img/cards/discover.svg' : '/mejoras_restaurant/static/src/img/cards/other.svg'"/>
+                <span class="pcb-line-chip ms-2">
+                    <img class="pcb-line-logo" t-att-src="brandImage" t-att-alt="line.card_brand"/>
+                    <span class="pcb-line-label"><t t-esc="line.card_brand"/></span>
+                </span>
+            </t>
+            <t t-if="line.lot_number">
+                <span class="pcb-line-lot ms-2">
+                    <t t-esc="'Lote: ' + line.lot_number"/>
+                </span>
+            </t>
+        </xpath>
+
+        <!-- Marca en línea no seleccionada -->
+        <xpath expr="//t[@t-else='']//div[hasclass('payment-amount')]" position="before">
+            <t t-if="line.card_brand">
+                <t t-set="brandImage" t-value="line.card_brand === 'Visa' ? '/mejoras_restaurant/static/src/img/cards/visa.svg' : line.card_brand === 'MasterCard' ? '/mejoras_restaurant/static/src/img/cards/mastercard.svg' : line.card_brand === 'American Express' ? '/mejoras_restaurant/static/src/img/cards/amex.svg' : line.card_brand === 'Diners Club' ? '/mejoras_restaurant/static/src/img/cards/diners.svg' : line.card_brand === 'Discover' ? '/mejoras_restaurant/static/src/img/cards/discover.svg' : '/mejoras_restaurant/static/src/img/cards/other.svg'"/>
+                <span class="pcb-line-chip me-2">
+                    <img class="pcb-line-logo" t-att-src="brandImage" t-att-alt="line.card_brand"/>
+                    <span class="pcb-line-label"><t t-esc="line.card_brand"/></span>
+                </span>
+            </t>
+            <t t-if="line.lot_number">
+                <span class="pcb-line-lot me-2">
+                    <t t-esc="'Lote: ' + line.lot_number"/>
+                </span>
+            </t>
+        </xpath>
+
+    </t>
+
+</templates>

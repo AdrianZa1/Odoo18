@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Background -->
+  <rect width="200" height="200" fill="#6B4C9A" rx="20"/>
+  
+  <!-- Plate/Dish -->
+  <circle cx="100" cy="90" r="50" fill="#E8D5F2" opacity="0.3"/>
+  <circle cx="100" cy="90" r="45" fill="none" stroke="#6B4C9A" stroke-width="2"/>
+  
+  <!-- Fork -->
+  <g transform="translate(70, 70)">
+    <rect x="0" y="0" width="4" height="40" fill="white" rx="2"/>
+    <circle cx="2" cy="45" r="3" fill="white"/>
+    <rect x="-8" y="8" width="4" height="15" fill="white" rx="2"/>
+    <rect x="0" y="8" width="4" height="15" fill="white" rx="2"/>
+    <rect x="8" y="8" width="4" height="15" fill="white" rx="2"/>
+  </g>
+  
+  <!-- Knife -->
+  <g transform="translate(130, 70)">
+    <rect x="0" y="0" width="3" height="40" fill="white" rx="1.5"/>
+    <polygon points="0,0 8,5 0,10" fill="white"/>
+    <circle cx="1.5" cy="43" r="3" fill="white"/>
+  </g>
+  
+  <!-- Text label -->
+  <text x="100" y="160" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white" text-anchor="middle">Mejoras</text>
+</svg>

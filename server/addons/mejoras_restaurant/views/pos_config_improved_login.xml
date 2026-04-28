@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Agregar campo al formulario de Configuración POS -->
+        <record id="view_pos_config_form_improved_login" model="ir.ui.view">
+            <field name="name">pos.config.form.improved.login</field>
+            <field name="model">pos.config</field>
+            <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+            <field name="arch" type="xml">
+                <!-- Agregar después del setting de pos_hr -->
+                <xpath expr="//setting[field[@name='module_pos_hr']]" position="after">
+                    <setting
+                            title="Habilita un teclado numérico grande optimizado para tablets, con búsqueda automática de empleados por PIN."
+                            string="Teclado Numérico Mejorado"
+                            help="Reemplaza el flujo de login estándar con un único popup de teclado numérico. Requiere pos_hr habilitado.">
+                        <field name="module_pos_improved_login" readonly="not module_pos_hr" />
+                        <div class="content-group mt16" invisible="not module_pos_improved_login">
+                            <div class="text-info">
+                                ℹ️ El login mejorado está habilitado. Los usuarios verán un teclado numérico grande al iniciar sesión en tablets.
+                            </div>
+                        </div>
+                        <div class="content-group mt16" invisible="module_pos_improved_login or module_pos_hr">
+                            <div class="text-warning">
+                                ⚠️ Advertencia: El login mejorado requiere que el módulo <strong>pos_hr</strong> esté habilitado.
+                            </div>
+                        </div>
+                    </setting>
+                    <setting string="Logo Personalizado del Header" help="Imagen personalizada para mostrar en el header del POS.">
+                        <field name="pos_header_logo_custom"/>
+                    </setting>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

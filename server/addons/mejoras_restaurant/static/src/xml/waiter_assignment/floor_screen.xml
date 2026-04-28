@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    
+    <!-- Extend FloorScreen template to show waiter name above tables -->
+    <t t-name="mejoras_restaurant.FloorScreen" 
+       t-inherit="pos_restaurant.FloorScreen" 
+       t-inherit-mode="extension">
+       
+        <!-- 
+            Insert waiter badge BEFORE the table info div
+            This places it visually above the table 
+        -->
+        <xpath expr="//div[@class='info position-relative w-100 h-100 overflow-hidden']" 
+               position="before">
+            
+            <!-- Get waiter data for this table -->
+            <t t-set="waiterName" t-value="this.getTableWaiter(table)"/>
+            <t t-set="waiterColor" t-value="this.getTableWaiterColor(table)"/>
+            
+            <!-- Only show badge if there's a waiter assigned -->
+            <div t-if="waiterName" 
+                 class="waiter-badge-container position-absolute w-100"
+                 style="top: -24px; left: 0; z-index: 100; pointer-events: none;">
+                
+                <div class="d-flex justify-content-center">
+                    <span class="waiter-badge badge rounded-pill text-white fw-bold px-2 py-1 shadow-sm"
+                          t-attf-style="
+                              background-color: {{waiterColor || '#2c3e50'}};
+                              font-size: 10px;
+                              white-space: nowrap;
+                              border: 2px solid white;
+                              box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+                          ">
+                        <!-- Emoji icon -->
+                        <span style="font-size: 11px;">👨‍🍳</span>
+                        <!-- Waiter name -->
+                        <t t-esc="waiterName"/>
+                    </span>
+                </div>
+                
+            </div>
+            
+        </xpath>
+
+        <!-- Show service progress above table number and waiting time below -->
+        <xpath expr="//div[contains(@class, 'label fw-bolder fs-4 position-absolute top-50 start-50 translate-middle')]"
+               position="replace">
+            <t t-set="serviceProgress" t-value="this.getTableServiceProgress(table)"/>
+            <t t-set="hasOrder" t-value="this.getTableHasOrder(table)"/>
+            <t t-set="waitingTime" t-value="this.getTableWaitingTime(table)"/>
+            <div class="table-center-meta d-flex flex-column align-items-center justify-content-center position-absolute top-50 start-50 translate-middle">
+                <!-- Service progress above table number -->
+                <div t-if="hasOrder" class="table-service-progress fw-semibold small">
+                    <t t-esc="serviceProgress"/>%
+                </div>
+                <!-- Table number -->
+                <div t-esc="table.table_number" class="label fw-bolder fs-4"/>
+                <!-- Waiting time below table number -->
+                <div t-if="waitingTime" class="table-waiting-time fw-semibold small">
+                    ⏱ <t t-esc="waitingTime"/>
+                </div>
+            </div>
+        </xpath>
+        
+    </t>
+    
+</templates>

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 200" width="500" height="200">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&amp;display=swap');
+    </style>
+  </defs>
+  <!-- Background transparent -->
+  
+  <!-- Red accent bar bottom -->
+  <rect x="40" y="155" width="420" height="8" rx="4" fill="#D0222A"/>
+  
+  <!-- Blue accent bar below red -->
+  <rect x="40" y="165" width="420" height="4" rx="2" fill="#1565C0"/>
+
+  <!-- Main text: Chavecito in cursive blue -->
+  <text 
+    x="250" 
+    y="135" 
+    font-family="'Dancing Script', 'Brush Script MT', cursive" 
+    font-size="105" 
+    font-weight="700"
+    fill="#1A6BC4" 
+    text-anchor="middle"
+    letter-spacing="2"
+  >Chavecito</text>
+
+  <!-- Subtle shadow/depth -->
+  <text 
+    x="252" 
+    y="137" 
+    font-family="'Dancing Script', 'Brush Script MT', cursive" 
+    font-size="105" 
+    font-weight="700"
+    fill="#0D47A1" 
+    text-anchor="middle"
+    letter-spacing="2"
+    opacity="0.15"
+  >Chavecito</text>
+
+  <!-- Small fish icon accent -->
+  <g transform="translate(442, 60) scale(0.6)" fill="#D0222A" opacity="0.85">
+    <ellipse cx="0" cy="0" rx="18" ry="10"/>
+    <polygon points="-18,0 -30,-10 -30,10" fill="#D0222A"/>
+    <circle cx="8" cy="-2" r="2.5" fill="white"/>
+  </g>
+  
+</svg>
