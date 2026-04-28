@@ -14,4 +14,4 @@ RUN chown -R odoo:odoo /mnt/extra-addons /etc/odoo
 
 USER odoo
 ENV ODOO_RC=/etc/odoo/odoo.conf
-CMD ["bash", "-lc", "if [ -z \"$ADMIN_PASSWD\" ]; then export ADMIN_PASSWD=admin; fi; envsubst < /etc/odoo/odoo.conf.template > /etc/odoo/odoo.conf && exec odoo"]
+CMD ["bash", "-lc", "export DB_HOST=${DB_HOST:-localhost}; export DB_PORT=${DB_PORT:-5432}; export DB_USER=${DB_USER:-odoo}; export DB_PASSWORD=${DB_PASSWORD:-odoo}; export DB_NAME=${DB_NAME:-odoo}; export ADMIN_PASSWD=${ADMIN_PASSWD:-admin}; envsubst < /etc/odoo/odoo.conf.template > /etc/odoo/odoo.conf && exec odoo"]
