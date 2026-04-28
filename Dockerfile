@@ -14,4 +14,10 @@ RUN chown -R odoo:odoo /mnt/extra-addons /etc/odoo
 
 USER odoo
 ENV ODOO_RC=/etc/odoo/odoo.conf
-CMD ["bash", "-lc", "export DB_HOST=${DB_HOST:-localhost}; export DB_PORT=${DB_PORT:-5432}; export DB_USER=${DB_USER:-odoo}; export DB_PASSWORD=${DB_PASSWORD:-odoo}; export DB_NAME=${DB_NAME:-odoo}; export ADMIN_PASSWD=${ADMIN_PASSWD:-admin}; envsubst < /etc/odoo/odoo.conf.template > /etc/odoo/odoo.conf && exec odoo"]
+ENV DB_HOST=dpg-d7o3vgpj2pic739k5bl0-a
+ENV DB_PORT=5432
+ENV DB_USER=odooo18_user
+ENV DB_PASSWORD=wWudyaae8FC1b87UuNljhIFMrCRQwgYp
+ENV DB_NAME=odooo18
+ENV ADMIN_PASSWD=admin
+CMD ["bash", "-lc", "envsubst < /etc/odoo/odoo.conf.template > /etc/odoo/odoo.conf && exec odoo"]

@@ -4,21 +4,3 @@ services:
     env: docker
     plan: free
     dockerfilePath: Dockerfile
-    envVars:
-      - key: DB_HOST
-        value: dpg-d7o3vgpj2pic739k5bl0-a
-      - key: DB_PORT
-        value: "5432"
-      - key: DB_USER
-        value: odooo18_user
-      - key: DB_PASSWORD
-        value: wWudyaae8FC1b87UuNljhIFMrCRQwgYp
-      - key: DB_NAME
-        value: odooo18
-      - key: ADMIN_PASSWD
-        value: admin
-
-  - type: postgres
-    name: odoo-db
-    plan: free
-    version: "15"
